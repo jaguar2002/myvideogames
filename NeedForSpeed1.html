@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<!-- This is based on DillingerLee's great template here:
+https://github.com/Team-Code/KA_Offline -->
+<html> 
+ <head>
+    <title>Processing.JS inside Webpages: Template</title> 
+    <style>
+
+        body{
+            background-color: aqua;
+        }
+        .red{
+            color:red
+        }
+        .blue{
+            color:blue;
+        }
+
+
+
+    </style>
+</head>
+ <body>
+    
+	<!--This draws the Canvas on the webpage -->
+    <h1 align = "center" class = "red">Need for speed 1</h1>
+    <p align="center"> 
+      <canvas id="mycanvas"></canvas> 
+    </p>
+ </body>
+ 
+
+
+ <!-- Run all the JavaScript stuff -->
+ <!-- Include the processing.js library -->
+ <!-- See https://khanacademy.zendesk.com/hc/en-us/articles/202260404-What-parts-of-ProcessingJS-does-Khan-Academy-support- for differences -->
+ <script src="https://cdn.jsdelivr.net/processing.js/1.4.8/processing.min.js"></script> 
+ 
+ <script>
+    var sketchProc = function(processingInstance) {
+     with (processingInstance) {
+        size(500, 500); 
+        frameRate(30);
+        
+        // ProgramCodeGoesHere
+        background(0, 255, 17); //defining the color of the background as green simulating a racing field
+
+
+
+var mainRedCarX = 40;//the x coordinate of the main red car (user controlled)
+var mainRedCarY = 200;//the y coordinate of the main red car (user controlled)
+
+var mainBlueCarX = 40;
+var mainBlueCarY = 290;
+
+noStroke();//for all of the objects so that there is no outline
+
+
+
+draw = function() {
+
+    
+    fill(143, 143, 143);//making the road gray
+    rect(0,153.5,500,193); //the road
+    
+    /*Begin code for red car*/
+    fill(255, 0, 0); //coloring the main car red
+    rect(mainRedCarX + 1,mainRedCarY,42,11); //the body of the main car
+    
+    fill(0, 0, 0);//coloring the tires of the car black
+    ellipse(mainRedCarX,mainRedCarY + 13,10,10); //the back tire
+    ellipse(mainRedCarX + 42,mainRedCarY + 13,10,10);//the front tire.
+    /*End code for red car */
+
+    if(keyPressed && keyCode === RIGHT){ //making the car travel 1 extra pixel forward everytime a right arrow is pressed.
+        mainRedCarX += random(3,5);
+    }else if(keyPressed && keyCode === LEFT){
+        mainRedCarX -= random(3,5);
+    }//making the car travel 1 extra pixel backwards everytime the left arrow key is pressed.
+    
+    /*Begin code for blue car*/
+    fill(0,0,255);//coloring the second car blue
+    rect(mainBlueCarX,mainBlueCarY,42,11); //the body for the second car
+    
+    fill(0, 0, 0);//coloring the tires black
+    ellipse(mainBlueCarX,mainBlueCarY + 13,10,10);
+    ellipse(mainBlueCarX + 42,mainBlueCarY + 13,10,10);
+    
+    if(keyPressed && keyCode === 68){
+        mainBlueCarX += 3;
+    } else if(keyPressed && keyCode === 65){
+        mainBlueCarX -= 3;
+    }
+    
+    
+
+    
+    
+
+};
+
+
+
+
+
+
+
+
+
+
+
+
+    }};
+
+    // Get the canvas that Processing-js will use
+    var canvas = document.getElementById("mycanvas"); 
+    // Pass the function sketchProc (defined in myCode.js) to Processing's constructor.
+    var processingInstance = new Processing(canvas, sketchProc); 
+ </script>
+
+<h2>Controls and Rules:</h2>
+
+<ol>
+
+    <li class = "red">Move forward for red: right arrow</li>
+    <li class = "red">Move backward for red: left arrow</li>
+    <li class = "blue">Move forward for blue: d key</li>
+    <li class = "blue">Move backward for blue: a key</li>
+    <li>press any key for brake</li>
+    <li>First one to reach end wins</li>
+
+</ol>
+
+</html>
