@@ -1,0 +1,89 @@
+background(0, 255, 17); //defining the color of the background as green simulating a racing field
+
+
+
+var mainRedCarX = 49;//the x coordinate of the main red car (user controlled)
+var mainRedCarY = 170;//the y coordinate of the main red car (user controlled)
+
+var greenCarX = 50;
+var greenCarY = 120;
+
+var blueCarX = 50;
+var blueCarY = 10;
+
+var computerBlueCarX = mainRedCarX;//the x coordinate of the main blue car (computer controlled), setting it equal to the red car
+
+var finishLineX = 376;
+
+var redCarWon = false;
+var greenCarWon = false;
+
+noStroke();//for all of the objects so that there is no outline
+
+
+
+draw = function() {
+
+    
+    
+    
+    fill(143, 143, 143);//making the road gray
+    rect(0,103.5,412,193); //the road
+    
+    
+    fill(255, 0, 0); //coloring the main car red
+    rect(mainRedCarX,mainRedCarY,42,11); //the body of the main car
+    
+    fill(0, 0, 0);//coloring the tires of the car black
+    ellipse(mainRedCarX,mainRedCarY + 13,10,10); //the back tire
+    ellipse(mainRedCarX + 42,mainRedCarY + 13,10,10);//the front tire.
+
+    if(keyPressed && keyCode === RIGHT){ //making the car travel 1 extra pixel forward everytime a right arrow is pressed.
+        mainRedCarX += 3;
+    }else if(keyPressed && keyCode === LEFT){
+        mainRedCarX -= 3;
+    }//making the car travel 1 extra pixel backwards everytime the left arrow key is pressed.
+
+    
+    fill(0, 255, 0);
+    rect(greenCarX,greenCarY,42,11);
+    
+    fill(0, 0, 0);
+    ellipse(greenCarX,greenCarY + 13,10,10);
+    ellipse(greenCarX + 41,greenCarY + 13,10,10);
+ 
+ 
+    greenCarX += 0;
+
+   
+    if(greenCarX > 400){
+        greenCarX = 0;
+    } else if (greenCarX > finishLineX && mainRedCarX < finishLineX && redCarWon === false){
+        text("green car wins", 90,90);
+    }
+    
+    if(mainRedCarX > 400){
+        mainRedCarX = 0;
+    } else if (mainRedCarX > finishLineX && greenCarX < finishLineX){
+        text("red car wins", 90,90);
+    }
+    
+    rect(finishLineX,104,22,193);
+    
+    fill(0, 0, 255);
+    rect(90,90,90,90);
+    
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
