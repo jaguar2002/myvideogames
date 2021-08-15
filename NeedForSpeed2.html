@@ -6,8 +6,26 @@ https://github.com/Team-Code/KA_Offline -->
 <html> 
  <head>
     <title>Processing.JS inside Webpages: Template</title> 
+    <style>
+
+        #title{
+            color:aqua;
+        }
+        #redcarinstructions{
+            color:red;
+        }
+        #orangecarinstructions{
+            color:orange;
+        }
+        body{
+            background-color: blue;
+        }
+
+
+    </style>
 </head>
  <body>
+     <h1 align = "Center" id = "title">NeedForSpeed 2</h1>
     <p align="center"> 
     <!--This draws the Canvas on the webpage -->
       <canvas id="mycanvas"></canvas> 
@@ -22,7 +40,7 @@ https://github.com/Team-Code/KA_Offline -->
  <script>
     var sketchProc = function(processingInstance) {
      with (processingInstance) {
-        size(400, 400); 
+        size(500, 450); 
         frameRate(30);
         
         // ProgramCodeGoesHere
@@ -47,13 +65,7 @@ var blackCarY = 236;
 
 var computerBlueCarX = mainRedCarX;//the x coordinate of the main blue car (computer controlled), setting it equal to the red car
 
-var finishLineX = 376;
-
-var redCarWon = false;
-var greenCarWon = false;
-var blueCarWon = false;
-var blackCarWon = false;
-var orangeCarWon = false;
+var finishLineX = 426;
 
 noStroke();//for all of the objects so that there is no outline
 
@@ -65,15 +77,16 @@ draw = function() {
     
     
     fill(46, 43, 46);//making the road dark gray
-    rect(0,103.5,412,193); //the road
+    rect(0,103.5,500,193); //the road
     
     fill(255, 255, 255);
-    rect(156,177,90,11); //traffic lane marker
+    rect(156,177,10,11); //traffic lane marker
     
     fill(255, 255, 255);
-    rect(55,177,90,11); //traffic lane marker
+    rect(55,177,140,11);7 //traffic lane marker
+
     fill(255, 255, 255);
-    rect(253,177,90,11); //traffic lane marker
+    rect(253,177,140,11); //traffic lane marker
     
     
     fill(255, 0, 0); //coloring the main car red
@@ -225,5 +238,14 @@ draw = function() {
     // Pass the function sketchProc (defined in myCode.js) to Processing's constructor.
     var processingInstance = new Processing(canvas, sketchProc); 
  </script>
+
+    <ul id = "redcarinstructions">
+            <li>Move forward for red: right arrow</li>
+            <li>Move backward for red: left arrow</li>
+    </ul>
+    <ul id = "orangecarinstructions">
+        <li>Move forward for orange: d key</li>
+        <li>Move backward for orange: a key</li>
+    </ul>
 
 </html>

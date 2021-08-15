@@ -22,7 +22,7 @@ https://github.com/Team-Code/KA_Offline -->
  <script>
     var sketchProc = function(processingInstance) {
      with (processingInstance) {
-        size(500, 500); 
+        size(400, 400); 
         frameRate(30);
         
         // ProgramCodeGoesHere
@@ -48,12 +48,6 @@ var blackCarY = 236;
 var computerBlueCarX = mainRedCarX;//the x coordinate of the main blue car (computer controlled), setting it equal to the red car
 
 var finishLineX = 376;
-
-var redCarWon = false;
-var greenCarWon = false;
-var blueCarWon = false;
-var blackCarWon = false;
-var orangeCarWon = false;
 
 noStroke();//for all of the objects so that there is no outline
 
@@ -104,8 +98,6 @@ draw = function() {
     if(greenCarX > 400){
         greenCarX = 0;
     } else if (greenCarX > finishLineX && redCarWon === false && orangeCarWon === false && blackCarWon === false){
-        fill(0, 255, 0);
-        text("green car wins", 90,90);
         
         mainRedCarX = 50;
         blackCarX = 50;
@@ -113,16 +105,11 @@ draw = function() {
         blueCarX = 50;
         mainOrangeCarX = 50;
         
-        greenCarWon = true;
-        
     }
     
     if(mainRedCarX > 400){
         mainRedCarX = 0;
     } else if (mainRedCarX > finishLineX && orangeCarWon === false && blackCarWon === false && greenCarWon === false){
-        fill(255, 0, 0);
-        text("red car wins", 90,90);
-        redCarWon = true;
         
         blackCarX = 50;
         greenCarX = 50;
@@ -143,14 +130,12 @@ draw = function() {
     if(blueCarX > 400){
         blueCarX = 0;
     } else if(blueCarX > finishLineX && redCarWon === false && greenCarWon === false && blackCarWon === false && orangeCarWon === false){
-        fill(0, 0, 255);
-        text("blue car wins", 90,90);
-        
         
         mainRedCarX = 50;
         greenCarX = 50;
+        blackCarX = 50;
+        mainOrangeCarX = 50;
         
-        blueCarWon = true;
     }
     
     fill(255, 165, 0);
@@ -170,12 +155,11 @@ draw = function() {
     if(mainOrangeCarX > 400){
         mainOrangeCarX = 0;
     } else if(mainOrangeCarX > finishLineX && redCarWon === false && blackCarWon === false && greenCarWon === false){
-        
-        fill(255, 170, 0);
-        mainOrangeCarX = 0;
-        text("Orange Car Wins",90,90);
-        
-        orangeCarWon = true;
+
+        blackCarX = 50;
+        mainRedCarX = 50;
+        blueCarX = 50;
+        greenCarX = 50;
         
     }
     
@@ -191,16 +175,12 @@ draw = function() {
         blackCarX = 0;
     } else if(blackCarX > finishLineX && redCarWon === false && orangeCarWon === false){
         
-        fill(0, 0, 0);
-        text("black car wins",90,90);
-        
         blackCarX = 50;
         greenCarX = 50;
         blueCarX = 50;
         mainRedCarX = 50;
         mainOrangeCarX = 50;
         
-        blackCarWon = true;
         
     }
     
